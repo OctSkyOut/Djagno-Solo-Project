@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block title %}
+<title>회원가입</title>
+{% endblock title %} {% block meta %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/static/admin/css/responsive.css"
+/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
+{% endblock meta %} {% block css %}
+<style>
+  body {
+    background-color: #e8ebe8;
+  }
+  .panel {
+    width: 100%;
+    text-align: center;
+  }
+  .panel-body {
+    margin: 0 auto;
+    padding: 5%;
+    width: 30%;
+    margin-top: 3%;
+    border: 1px solid #dcdedc;
+    background-color: white;
+    {% comment %} border-radius: 30px; {% endcomment %}
+  }
+  .btn {
+    width: 25%;
+  }
+  label {
+    font-size: 1rem;
+    width: 40%;
+    text-align: left;
+  }
+</style>
+{% endblock css %} {% block content %}
+<div id="container" class="login">
+  <!-- Header -->
+  <div id="header">
+    <div id="branding">
+      <h1 id="site-name"><a href="/signup/">My App 회원가입</a></h1>
+    </div>
+  </div>
+  <!-- END Header -->
+
+  <!-- Content -->
+  <div class="panel panel-default registration">
+    <div class="panel-body">
+      <form action="." method="post">
+        {% csrf_token %} {% for field in form %}
+        <h3>{{ field.errors }}</h3>
+        <label for="id_{{ field.html_name }}">{{ field.label }}</label>
+        {{ field }} {% endfor %}
+        <div class="form-actions">
+          <button class="btn btn-primary btn-large" type="submit">
+            가입하기
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% endblock content %}
+</div>

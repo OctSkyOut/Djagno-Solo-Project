@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block title %}
+<title>글 목록</title>
+{% endblock title %} {% block meta %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous"
+/>
+{% endblock meta %} {% block content %}
+<table style="margin: 10% auto; width: 70%; text-align: center" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">제목</th>
+      <th scope="col">내용</th>
+      <th scope="col">작성자</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for article in articles %}
+    <tr>
+      <th style="width: 15%" scope="row">{{ forloop.counter }}</th>
+      <th scope="col">
+        <a href="{{article.id}}" style="color: black">{{article.title}}</a>
+      </th>
+      <th scope="col">{{article.content}}</th>
+      <th scope="col" style="width: 15%">{{article.author}}</th>
+    </tr>
+
+    {% endfor %}
+  </tbody>
+  <tbody>
+    <th style="width: 15%">
+      <div
+        class="btn-toolbar"
+        role="toolbar"
+        aria-label="Toolbar with button groups"
+      >
+        <div role="group" aria-label="First group">
+          <button type="button" class="btn btn-primary">
+            <a class="btn-primary" href="create">글 생성</a>
+          </button>
+          <button type="button" class="btn btn-primary">
+            <a class="btn-primary" href="signout">로그아웃</a>
+          </button>
+        </div>
+      </div>
+    </th>
+  </tbody>
+</table>
+{% endblock content %}

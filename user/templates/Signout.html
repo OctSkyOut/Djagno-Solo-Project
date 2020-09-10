@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block css %}
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<style>
+  #container {
+    text-align: center;
+  }
+  #branding,
+  .breadcrumbs {
+    text-align: center;
+  }
+</style>
+{% endblock css %} {% block content %}
+<body class="" data-admin-utc-offset="32400">
+  <!-- Container -->
+  <div id="container">
+    <!-- Header -->
+    <div id="header">
+      <div id="branding">
+        <h1 id="site-name"><a href="/signin/">MY App 로그아웃</a></h1>
+      </div>
+    </div>
+    <!-- END Header -->
+    <div class="breadcrumbs"><a href="/signin/">홈</a></div>
+
+    <!-- Content -->
+    <div id="content" class="colM">
+      <h1>로그아웃</h1>
+
+      <p>사이트를 이용해 주셔서 고맙습니다.</p>
+
+      <p><a href="/signin/">다시 로그인하기</a></p>
+
+      <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+  </div>
+  <!-- END Container -->
+</body>
+{% endblock content %}

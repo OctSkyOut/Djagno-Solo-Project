@@ -1,0 +1,93 @@
+{% extends 'base.html' %} {% block title %}
+<title>로그인</title>
+{% endblock title %} {% block meta %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/static/admin/css/responsive.css"
+/>
+{% endblock meta %} {% block css %}
+<style>
+  body {
+    background-color: #e8ebe8;
+  }
+  h3 {
+    color: red;
+    margin-bottom: 5%;
+  }
+  label {
+    font-size: 1rem;
+    width: 40%;
+    text-align: left;
+  }
+  .submit-div {
+    margin: 2% 0;
+  }
+  #content-main {
+    margin: 0 auto;
+    padding: 5%;
+    width: 30%;
+    margin-top: 3%;
+    background-color: white;
+    text-align: center;
+  }
+</style>
+{% endblock css %} {% block content %}
+<body class="login" data-admin-utc-offset="32400">
+  <!-- Container -->
+  <div id="container">
+    <!-- Header -->
+    <div id="header">
+      <div id="branding">
+        <h1 id="site-name"><a href="/admin/">MY APP 로그인</a></h1>
+      </div>
+    </div>
+    <!-- END Header -->
+
+    <!-- Content -->
+    <div id="content" class="colM">
+      <div id="content-main">
+        <form action="." method="post" id="login-form">
+          {% csrf_token %} 
+          {% if messages %}
+            {% for message in messages %}
+                <h3>{{ message.message }}</h3>
+              {% endfor %}
+          {% endif %}
+          {% for field in form %}
+          <label for="id_{{ field.html_name }}">{{ field.label }}</label>
+          {{ field }} {% endfor %}
+          <div class="submit-div">
+            <input type="submit" value="로그인" />
+          </div>
+          <div class="submit-div">
+            <a style="color: white" class="btn btn-primary" href="/signup/"
+              >회원가입하러가기</a
+            >
+          </div>
+        </form>
+      </div>
+
+      <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+  </div>
+  <!-- END Container -->
+
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/admin/css/responsive.css"
+  />
+</body>
+{% endblock content%}

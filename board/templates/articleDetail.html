@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %}
+<title>상세페에지 | {{ article.title}}</title>
+{% endblock title %} {% block meta %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous"
+/>
+{% endblock meta %} {% block content %}
+<div class="card" style="margin: 10% auto; width: 70%">
+  <div class="card-header">제목 : {{article.title}}</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      내용 <br /><br />
+      {{article.content}}
+    </li>
+    <li class="list-group-item">작성자 : {{article.author}}</li>
+    <li class="list-group-item">작성일 : {{article.createDate}}</li>
+    <li class="list-group-item">
+      <a class="btn btn-warning" href="/article/">돌아가기</a>
+      <a class="btn btn-primary" href="{{article.id}}/update">게시글 수정</a>
+      <form
+        style="display: inline"
+        method="post"
+        action="/article/{{article.id}}"
+      >
+        {% csrf_token %}
+        <input
+          class="btn btn-danger"
+          type="submit"
+          name="delete"
+          value="삭제"
+          style="width: 5%"
+        />
+      </form>
+    </li>
+  </ul>
+</div>
+{% endblock content %}

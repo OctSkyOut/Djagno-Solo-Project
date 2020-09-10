@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>새로운 글 작성</title>
+{% endblock title %}
+ {% block meta %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous" 
+/>
+{% endblock meta %} 
+{% block css %}
+<style>
+  form{
+    width: 50%;
+    margin : 0 auto;
+  }
+  .form-board{
+    margin-top : 10%;
+  }
+  .form-board > h1{
+    text-align : center
+  }
+  .btn {
+    margin-top : 3%;
+  }
+  </style>
+{% endblock css %}
+{% block content %}
+<form method="POST" action="{% if article %}update{% else %}create{%endif%}">
+  {% csrf_token %}
+  <div class="form-board">
+    <h1> 글 작성 </h1>
+      <div class="form-group">
+        <label for="article-title">제목</label>
+        <input
+          type="text"
+          class="form-control"
+          id="article-title"
+          name="title"
+          placeholder="제목을 입력하세요"
+          value="{{ article.title }}"
+        />
+      </div>
+        <label for="Textarea1">내용</label>
+        <textarea
+          class="form-control"
+          id="Textarea1"
+          rows="3"
+          name="content"
+        >{{article.content}}</textarea>
+        <label for="Textarea1">작성자</label>
+        <textarea
+          class="form-control"
+          id="Textarea1"
+          rows="1"
+          name="author"
+        >{{article.author}}</textarea>
+        </div>
+      <input class="btn btn-primary" type="submit" name="action" value="{% if article %}update{% else %}create{%endif%}"/>
+    <div>
+</form>
+{% endblock content %}

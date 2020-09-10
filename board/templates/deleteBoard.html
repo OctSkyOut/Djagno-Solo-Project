@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}
+<title>해당 글을 삭제했습니다.</title>
+{% endblock title %} {% block meta %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous"
+/>
+{% endblock meta %} {% block content %}
+<div class="card" style=" height:100%;">
+  <div class="card-body" style="width: 50%; margin:10% auto">
+    <h1> ❌ 해당 글을 삭제했습니다.</h1>
+    <button type="button" class="btn btn-warning"><a href='/article/' style="color: black; text-decoration:none">목록으로 가기</button>
+  </div>
+{% endblock content %}
