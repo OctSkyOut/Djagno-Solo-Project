@@ -56,7 +56,7 @@
 ---
 
 > ## Django 서버 실행방법
-> python manage.py runserver
+> ```python manage.py runserver```
 > 회원가입하시고 이용해 보세요~
 
 #### 앞으로도 코드리팩토링은 이어집니다~~
